@@ -36,7 +36,7 @@ def run_ecolab(env,agents,Niterations=1000,earlystop=True):
         #record the grass and agent locations (and types) for later plotting & analysis
         record.append({'grass':env.grass.copy(),'agents':np.array([a.summary_vector() for a in agents])})
 
-        #stop early if we run out of rabbits and foxes
+        #stop early if we run out of agents
         if earlystop:
             if len(agents)==0: break
     return record
@@ -82,7 +82,6 @@ def draw_animation(fig,record,fps=20,saveto=None):
             pplot[0].set_data(coords[:,1],coords[:,0])
             coords = ags[ags[:,-1]==ecolab3e.agents.Female,0:2]
             fplot[0].set_data(coords[:,1],coords[:,0])
-            #return [im]#,rabbits,foxes]
 
     anim = animation.FuncAnimation(
                                    fig, 
